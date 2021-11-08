@@ -12,5 +12,3 @@ func main() {
 	http.HandleFunc("/bands/", grtrack.HundlerSecond)
 	http.ListenAndServe(":8080", nil)
 }
-
-//
