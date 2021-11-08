@@ -1,14 +1,16 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
+	grtrack "grtrack/struct"
 	"net/http"
 )
 
+//include templates
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/main", grtrack.HundlerFirst)
+	http.HandleFunc("/bands/", grtrack.HundlerSecond)
 	http.ListenAndServe(":8080", nil)
 }
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "webApiBd!")
-}
+
+//
