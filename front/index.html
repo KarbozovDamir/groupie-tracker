@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Trackers | Bands</title> // Bands -> Artists
+    <link rel="stylesheet" href="/front/style.css">
+</head>
+<body>
+    <header class="header" id="top-header">
+        <h1 >Groupie Trackers</h1>
+    </header>
+    
+    <section class="main">
+        <article class="card-table">
+            <form class="Bands" action="" method="POST">
+                <datalist id="Bands"> // Bands -> Artists
+                    {{range .}}
+                    <option value="{{.Name}}">
+                        {{range .Members}}
+                    <option value="{{.}}">
+                        {{end}}
+                    <option value="{{.CreationDate}}">
+                    <option value="{{.FirstAlbum}}">
+                        {{range $date := .RelationsData}}
+                            {{range $date}}
+                    <option value="{{.}}">
+                            {{end}}
+                        {{end}}
+                    {{end}}
+                </datalist>
+                <input class="btn" type="submit" value="Search">
+                {{range .}}
+            </form>
+
+            <form class="card-btn" action="/artist" method="post">
+                <button class="card" name="artist-btn" type="submit" value="{{.Name}}">
+                    <img src="{{.Image}}" width="200" height="200" alt="{{.Name}}">
+                    <h3 class="btn-artist">{{.Name}}</h3>
+                </button>
+
+                {{end}}
+            </form>
+                
+        </article>
+    </section>
+        
+    <footer class="footer">
+        <p >Made by Ovalovk and damirkap89 from alem school</a></p>
+    </footer>
+
+    
+</body>
+</html>
