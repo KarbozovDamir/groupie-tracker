@@ -6,20 +6,24 @@ import (
 	"net/http"
 )
 
+type b int
+
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", handler) //main page
+	// b := beka
+	mux.HandleFunc("/", handler) //home page
 
-	mux.HandleFunc("/band/", grtrack.Band) // one group or one artist
+	// mux.HandleFunc("/band/", grtrack.Band) // one group or one artist
 	fmt.Printf("The server is running on this address: http://localhost:8080")
 
-	log.Fatal(ListenAndServe(":8080", mux))
+	log.Fatal(http.ListenAndServe(":8080", mux))
 
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "webApiBd!")
+
 }
 
 // func main() {
